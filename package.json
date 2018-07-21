@@ -1,0 +1,29 @@
+{
+  "name": "zeppelin-number",
+  "version": "1.0.0",
+  "description": "Zeppelin plugin to visualize number",
+  "main": "index.js",
+  "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+      "zeppelin",
+      "helium",
+      "visualization",
+      "number"
+  ],
+  "author": "Saravanan Elumalai <sarav.sars@gmail.com>",
+  "license": "Apache-2.0",
+  "dependencies": {
+      "zeppelin-tabledata": "*",
+      "zeppelin-vis": "*"
+  },
+  "repository": {
+      "type": "git",
+      "url": "git+https://github.com/saravsars/zeppelin-number.git"
+  },
+  "bugs": {
+      "url": "https://github.com/saravsars/zeppelin-number/issues"
+  },
+  "homepage": "https://github.com/saravsars/zeppelin-number#readme"
+}
