@@ -1,17 +1,4 @@
-export const SimpleCardParameter = {
-	'fontColor': { valueType: 'string', defaultValue: 'black', description: 'font color', },
-	'fontSize': { widget: 'option', valueType: 'string', defaultValue: 'medium', description: 'font size', optionValues: ['small', 'medium', 'large',], },
-	'alignment': { widget: 'option', valueType: 'string', defaultValue: 'center', description: 'alignment', optionValues: ['left', 'right', 'center',], },
-	'iconName': { valueType: 'string', defaultValue: '', description: 'font awesome icon name. Ex: users' },
-	'showTitle': { widget: 'checkbox', valueType: 'boolean', defaultValue: true, description: 'show title', },
-	'prefix': { valueType: 'string', defaultValue: '', description: 'prefix', },
-	'suffix': { valueType: 'string', defaultValue: '', description: 'suffix', },
-}
-
 export function renderSimpleCard(rows, column, parameter) {
-	if (rows.length == 0) {
-		return `<div style="text-align: center; font-size: 18px;">Empty rows. Please check the output.</div>`
-	}
 	let css = renderCSS()
 	let mainTitle = renderMainTitle(rows, column, parameter)
 	let secondaryTitle = renderSecondaryTitle(rows, column, parameter)
@@ -25,15 +12,23 @@ export function renderSimpleCard(rows, column, parameter) {
 }
 
 function renderMainTitle(rows, column, parameter) {
+	let mainValue = '-'
+	let mainIndex = 0
+	if (column.key.length > 0) {
+		mainIndex = column.key[0].index
+	}
+	if (rows.length > 0 && rows[0].length > mainIndex) {
+		mainValue = rows[0][mainIndex]
+	}
 	let mainTitle = `<div class="zn-main zn-main-info zn-${parameter.fontSize}">
 		${parameter.showTitle ?
-			`${column.key.length ? 
+			`${column.key.length ?
 				`<p class="zn-main-header">${column.key[0].name.replace(/_/g, ' ')}</p>` : ''}`
-		: ''}
+			: ''}
 		<p class="zn-main-value" ${parameter.fontColor ? `style="color: ${parameter.fontColor}"` : ''}>
 			${parameter.iconName ? `<i class="fa fa-${parameter.iconName}"></i>` : ''}
 			${parameter.prefix ? `${parameter.prefix}` : ''}
-			${column.key.length ? `${rows[0][column.key[0].index]}` : `${rows[0][0]}`}
+			${mainValue}
 			${parameter.suffix ? `${parameter.suffix}` : ''}
 		</p>
 		</div>`
@@ -43,11 +38,16 @@ function renderMainTitle(rows, column, parameter) {
 function renderSecondaryTitle(rows, column, parameter) {
 	let secondaryTitle = ''
 	if (column.aggregator.length > 0) {
+		let secondaryValue = '-'
+		let secondaryIndex = column.aggregator[0].index
+		if (rows.length > 0 && rows[0].length > secondaryIndex) {
+			secondaryValue = rows[0][secondaryIndex]
+		}
 		secondaryTitle = `<div class="zn-main zn-sub-info zn-${parameter.fontSize}">
 			<p class="zn-sub-header">
 				${column.aggregator[0].name.replace(/_/g, ' ')} 
 				<span class="zn-sub-value"> 
-					${rows[0][column.aggregator[0].index]} 
+					${secondaryValue}
 				</span>
 			</p>
       </div>`

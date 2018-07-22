@@ -1,7 +1,7 @@
 import Visualization from 'zeppelin-vis'
 import AdvancedTransformation from 'zeppelin-tabledata/advanced-transformation'
 
-import { SimpleCardParameter, renderSimpleCard, } from './cards/simple.js'
+import { renderSimpleCard, } from './cards/simple.js'
 
 export default class ZeppelinNumber extends Visualization {
 
@@ -17,7 +17,15 @@ export default class ZeppelinNumber extends Visualization {
             'main title': { dimension: 'single', axisType: 'key', },
             'secondary title': { dimension: 'single', axisType: 'aggregator', },
           },
-          parameter: SimpleCardParameter,
+          parameter: {
+            'fontColor': { valueType: 'string', defaultValue: 'black', description: 'font color', },
+            'fontSize': { widget: 'option', valueType: 'string', defaultValue: 'medium', description: 'font size', optionValues: ['small', 'medium', 'large',], },
+            'alignment': { widget: 'option', valueType: 'string', defaultValue: 'center', description: 'alignment', optionValues: ['left', 'right', 'center',], },
+            'iconName': { valueType: 'string', defaultValue: '', description: 'font awesome icon name. Ex: users' },
+            'showTitle': { widget: 'checkbox', valueType: 'boolean', defaultValue: true, description: 'show title', },
+            'prefix': { valueType: 'string', defaultValue: '', description: 'prefix', },
+            'suffix': { valueType: 'string', defaultValue: '', description: 'suffix', },
+          },
         }
       },
     }
