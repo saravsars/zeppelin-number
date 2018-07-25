@@ -3,6 +3,6 @@
   "name": "zeppelin-number",
   "description": "Zeppelin plugin to visualize number",
   "license": "Apache-2.0",
-  "artifact": "zeppelin-number@1.0.0",
+  "artifact": "zeppelin-number@1.0.1",
   "icon": "<i style='margin-left: -5px;'>123</i>"
 }

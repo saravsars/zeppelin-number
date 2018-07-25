@@ -25,5 +25,6 @@
     "bugs": {
         "url": "https://github.com/saravsars/zeppelin-number/issues"
     },
-    "homepage": "https://github.com/saravsars/zeppelin-number#readme"
+    "homepage": "https://github.com/saravsars/zeppelin-number#readme",
+    "icon": "<i style='margin-left: -5px;'>123</i>"
 }
