@@ -36,22 +36,21 @@ function renderMainTitle(rows, column, parameter) {
 }
 
 function renderSecondaryTitle(rows, column, parameter) {
-	let secondaryTitle = ''
-	if (column.aggregator.length > 0) {
+	let secondaryTitle = '<div class="zn-main zn-sub-info zn-${parameter.fontSize}">'
+	for (let i = 0; i < column.aggregator.length; i++) {
 		let secondaryValue = '-'
-		let secondaryIndex = column.aggregator[0].index
+		let secondaryIndex = column.aggregator[i].index
 		if (rows.length > 0 && rows[0].length > secondaryIndex) {
 			secondaryValue = rows[0][secondaryIndex]
 		}
-		secondaryTitle = `<div class="zn-main zn-sub-info zn-${parameter.fontSize}">
-			<p class="zn-sub-header">
-				${column.aggregator[0].name.replace(/_/g, ' ')} 
+		secondaryTitle += `<p class="zn-sub-header">
+				${column.aggregator[i].name.replace(/_/g, ' ')} 
 				<span class="zn-sub-value"> 
 					${secondaryValue}
 				</span>
-			</p>
-      </div>`
+			</p>`
 	}
+	secondaryTitle += '</div>'
 	return secondaryTitle
 }
 

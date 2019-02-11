@@ -15,7 +15,7 @@ export default class ZeppelinNumber extends Visualization {
           sharedAxis: false,
           axis: {
             'main title': { dimension: 'single', axisType: 'key', },
-            'secondary title': { dimension: 'single', axisType: 'aggregator', },
+            'secondary title': { dimension: 'multiple', axisType: 'aggregator', },
           },
           parameter: {
             'fontColor': { valueType: 'string', defaultValue: 'black', description: 'font color', },
